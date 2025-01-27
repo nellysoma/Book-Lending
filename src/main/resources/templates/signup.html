@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Book Lending - Sign Up</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Bootstrap core CSS -->
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+        
+    </head>
+    <body>
+        <div th:insert="~{navbar.html::navbar}"></div>
+        <main>
+            <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+                <div class="row align-items-center g-lg-5 py-5">
+                    <div class="col-lg-7 text-center text-lg-start">
+                        <h1 class="display-4 fw-bold lh-1 mb-3">Book Lending - Sign Up</h1>
+                        <p class="col-lg-10 fs-4">Sign up and get opportunity to borrow books from som many genres.</p>
+                    </div>
+                    <div class="col-md-10 mx-auto col-lg-5">
+                        <form class="form needs-validation p-4 p-md-5 border rounded-3 bg-light" 
+                              th:action="@{/create_user}" 
+                              th:object="${formData}" 
+                              method="POST">
+                            
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" th:field="*{firstName}" required>
+                                <label for="floatingInput">First Name</label>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please choose a username.
+                                </div>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput"  th:field="*{lastName}" required>
+                                <label for="floatingInput">Last Name</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" th:field="*{email}" required>
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" th:field="*{password}" required>
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <div class="checkbox mb-3">
+                                <label>
+                                    <input type="checkbox" value="remember-me"> Remember me
+                                </label>
+                            </div>
+                            <input type="hidden"  id="role"  th:field="*{role}" th:value="reader">
+                            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+                            <hr class="my-4">
+                            <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:insert="~{footer.html::footer}"></div>
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/jquery/js/jquery.min.js"></script>
+    </body>
+</html>
